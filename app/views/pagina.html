@@ -1,0 +1,25 @@
+{% extends "base_sistema.html" %}
+{% block subtitulo %}Pagina inicial{% endblock%}
+    {% block conteudo %}
+    <section class="content">
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+                <h3>Info.</h3>
+              <p>Usuarios</p>
+            </div>
+            <div class="icon">
+              <i class="fa-solid fa-hotel"></i>
+            </div>
+            <a href="{{url_for('inicio')}}" class="small-box-footer">Mais informações<i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div><!-- ./col -->       
+      </div><!-- /.row -->
+      <!-- Main row -->
+    </section>
+      
+
+    {% endblock %}
