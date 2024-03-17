@@ -1,0 +1,44 @@
+{% extends "base_sistema.html" %}
+{% block subtitulo %} Usuarios {% endblock%}
+    {% block conteudo %}
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Cadastro de usuarios</h3>
+            </div><!-- /.box-header -->
+            <!-- form start -->
+            <form class="row g-3" action="" method="POST" name="dados_user" onSubmit="return enviardados_user();">
+              <div class="box-body">               
+                <div class="col-md-4">
+                  <label class="form-label">Nome</label>
+                  <input class="form-control" type="text" name="nome" id="nome" value="caraca@caraca.com">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label" >E-mail</label>
+                  <input class="form-control" type="email" name="email" value="caraca@caraca.com">
+                </div>
+                <div class="col-md-4">
+                 
+                  <label class="form-label">Senha</label>
+                  <input class="form-control"  type="password" name="senha" value="2222222222">
+                </div> 
+                <div class="col-md-12">
+                  <br>                      
+                </div>                                                         
+                <div class="col-md-12">
+                  <button class="btn btn-primary" type="submit">Alterar</button>                      
+                </div>
+                       
+            </div>
+            
+            </form>                 
+          </div><!-- /.box -->         
+        </div><!--/.col (left) -->
+        <!-- right column -->        
+      </div>   <!-- /.row -->
+    </section><!-- /.content -->
+    {% endblock %}

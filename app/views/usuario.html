@@ -1,0 +1,48 @@
+{% extends "base_sistema.html" %}
+{% block subtitulo %} Usuario {% endblock%}
+{% block conteudo %}
+<section class="content">
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Vizualiza usuarios por unidade</h3>
+        </div><!-- /.box-header -->
+        <!-- form start -->
+        <form class="row g-3">
+          <div class="box-body">
+           
+            <div class="col-md-4">
+              <label class="form-label" >Id</label>
+              <input class="form-control" type="text" value="1" disabled>
+            </div>
+          <div class="col-md-4">
+            <label class="form-label">Nome</label>
+            <input class="form-control" type="text" name="nome" value="caraca" disabled>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" >Email</label>
+            <input class="form-control" type="email" name="email" value="teste" disabled>
+          </div>                  
+          <div class="col-md-12">
+            <label class="form-label">Token</label>
+            <input class="form-control" type="text" value="" disabled>
+          </div> 
+          <div class="col-md-12">
+            <br>
+          </div>                                                     
+          <div class="col-md-12">
+            <a href="" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Excluir</a>
+          </div>                
+                   
+        </div>
+        
+        </form>                 
+      </div><!-- /.box -->         
+    </div><!--/.col (left) -->
+    <!-- right column -->        
+  </div>   <!-- /.row -->
+</section><!-- /.content -->
+{% endblock %}
