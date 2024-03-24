@@ -48,9 +48,9 @@
         <!-- Logo -->
         <a href="{{url_for('inicio')}}" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>R</b>H</span>
+          <span class="logo-mini"><b>N</b>P</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>RH</b>online</span>
+          <span class="logo-lg"><b>Natus</b>Pharma</span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -95,7 +95,7 @@
           <ul class="sidebar-menu">
             <li class="header"></li>          
             
-            <li>
+            <li> <!--opções do menu-->
               <a href="{{url_for('inicio')}}">
                 <i class="fa-solid fa-user"></i> <span> Usuarios</span>
               </a>
@@ -118,8 +118,19 @@
                 <i class="fa-solid fa-user"></i> <span> Nota Fiscal</span>
               </a>
             </li> 
+
+            <li>
+              <a href="{{url_for('cliente')}}">
+                <i class="fa-solid fa-user"></i> <span> Cliente</span>
+              </a>
+            </li> 
+
+            <li>
+              <a href="{{url_for('pedido')}}">
+                <i class="fa-solid fa-user"></i> <span>Pedido</span>
+              </a>
+            </li> 
             
-                        
           </ul>
         </section>
         <!-- /.sidebar -->

@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="box-header">
-        <h3 class="box-title">Cadastro de Nota Fiscal</h3>
+        <h3 class="box-title">Cadastro de Cliente</h3>
       </div><!-- /.box-header -->
       <div class="box">
         <div class="car">
@@ -25,10 +25,10 @@
             <table id="example" class="display" style="width:100%">
               <thead>
                   <tr>
-                    <th scope="col">Id NF</th>
-                    <th scope="col">Nº Nota Fiscal</th>
-                    <th scope="col">Valor</th>
-                    <th scope="col">Data de Emissão</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Empresa</th>
                     <th scope="col">Alterar</th>                     
                     <th scope="col">Excluir</th>
                   </tr>
@@ -36,26 +36,16 @@
               <tbody>
                   <tr>
                     <td><a href="{{url_for('usuario')}}">1</a></td>
-                    <td>131</td>
-                    <td>1.000,00</td>
-                    <td>24-03-2024</td>
+                    <td>Ana Silva</td>
+                    <td>silvaana@gmail.com</td>
+                    <td>Hospital Municipal</td>
                     <td><a href="{{url_for('atualiza_user')}}"><span class="label label-success"><i class="fa-solid fa-pencil"></i> Alterar</span></a></td>
                     <td><a href="{{url_for('usuario')}}"><span class="label label-danger"><i class="fa-solid fa-eraser"></i> Excluir</span></a></td>
                   </tr>
 
-                  <tr>
-                    <td><a href="{{url_for('usuario')}}">2</a></td>
-                    <td>128</td>
-                    <td>500,00</td>
-                    <td>24-03-2024</td>
-                    <td><a href="{{url_for('atualiza_user')}}"><span class="label label-success"><i class="fa-solid fa-pencil"></i> Alterar</span></a></td>
-                    <td><a href="{{url_for('usuario')}}"><span class="label label-danger"><i class="fa-solid fa-eraser"></i> Excluir</span></a></td>
-                  </tr>
-               
-                           
               </tbody>
           </table>
-          <a href="{{url_for('cad_NF')}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Inserir Nota</a>
+          <a href="{{url_for('cad_cliente')}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Inserir Cliente</a>
        </div>      
     </div>        
   </div>

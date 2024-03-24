@@ -8,7 +8,7 @@
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Cadastro de Produto</h3>
+              <h3 class="box-title">Cadastro de Cliente</h3>
             </div><!-- /.box-header -->
             <!-- form start -->
             <form class="row g-3" action="{{url_for('cad_user')}}" method="POST" name="dados_user" onSubmit="return enviardados_user();">
@@ -29,24 +29,16 @@
               
               <div class="col-md-4">
                 <label class="form-label">*Nome</label>
-                <input class="form-control" type="text" name="nome" id="nome">
+                <input class="form-control" type="text" name="num_nf" id="num_nf">
               </div>
               <div class="col-md-4">
-                <label class="form-label" >QRCode Produto</label>
-                <input class="form-control" type="tet" name="email">
+                <label class="form-label" >Email</label>
+                <input class="form-control" type="email" name="email">
               </div>
               <div class="col-md-4">
-                <label class="form-label">Reação</label>
-                <input class="form-control"  type="date " name="senha">
-              </div>
-              <div class="col-md-4">
-                <label class="form-label">Validade</label>
-                <input class="form-control"  type="date" name="dat_validade">
-              </div>
-              <div class="col-md-4">
-                <label class="form-label">Conservação</label>
-                <input class="form-control"  type="date " name="senha">
-              </div>
+                <label class="form-label">Empresa</label>
+                <input class="form-control"  type="text" name="empresa">
+              </div>   
               <div class="col-md-12">
                 <br>
               </div>                             

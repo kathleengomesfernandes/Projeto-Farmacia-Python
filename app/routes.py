@@ -29,17 +29,37 @@ def init_app(app):
     def produto():        
         return render_template("produto.html")
     
+    @app.route("/cliente")
+    def cliente():        
+        return render_template("cliente.html")
+    
     @app.route("/cad_prod")
     def cad_prod():        
         return render_template("cad_prod.html")
+    
+    @app.route("/cad_cliente")
+    def cad_cliente():        
+        return render_template("cad_cliente.html")
     
     @app.route("/usuario")
     def usuario():        
         return render_template("usuario.html")
     
+    @app.route("/pedido")
+    def pedido():        
+        return render_template("pedido.html")
+    
     @app.route("/cad_user")
     def cad_user():        
         return render_template("cad_user.html")
+    
+    @app.route("/cad_pedido")
+    def cad_pedido():        
+        return render_template("cad_pedido.html")
+    
+    @app.route("/cad_NF")
+    def cad_NF():        
+        return render_template("cad_NF.html")
     
     @app.route("/cad_financeiro")
     def cad_financeiro():        
