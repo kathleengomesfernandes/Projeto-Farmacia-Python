@@ -10,8 +10,24 @@ class usuario(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     nome = db.Column(db.String(255), nullable=False)
+    senha = db.Column(db.String(255),nullable=False)
     data = db.Column(db.DateTime,  default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())   
 
-   
+class produto(db.Model):
+    __tablename__ = "produto"
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(255), nullable=False, unique=True)
+    tipo = db.Column(db.String(255), nullable=False)
+    quatidade = db.Column(db.Integer, nullable=False)
+    data = db.Column(db.DateTime,  default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
+
+class financeiro(db.Model):
+    __tablename__ = "financeiro"
+    id = db.Column(db.Integer, primary_key=True)
+    agencia = db.Column(db.String(255), nullable=False, unique=True)
+    tipo = db.Column(db.String(255), nullable=False)
+    quatidade = db.Column(db.Integer, nullable=False)
+    data = db.Column(db.DateTime,  default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
+
 
    

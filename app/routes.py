@@ -15,8 +15,15 @@ def init_app(app):
     
     @app.route("/")
     def inicio():        
-        return render_template("inicio.html")
+        return render_template("/inicio.html", usuarios=db.session.execute(db.select(usuario).order_by(usuario.id)).scalars())
     
+    @app.route("/excluir/<int:id>")
+    def excluir_user(id):
+        delete=usuario.query.filter_by(id=id).first()
+        db.session.delete(delete)
+        db.session.commit()
+        return redirect(url_for("inicio"))
+
     @app.route("/nota_fiscal")
     def nota_fiscal():        
         return render_template("nota_fiscal.html")
@@ -41,9 +48,9 @@ def init_app(app):
     def cad_cliente():        
         return render_template("cad_cliente.html")
     
-    @app.route("/usuario")
-    def usuario():        
-        return render_template("usuario.html")
+    #@app.route("/usuario")
+    #def usuario():        
+        #return render_template("usuario.html")
     
     @app.route("/pedido")
     def pedido():        

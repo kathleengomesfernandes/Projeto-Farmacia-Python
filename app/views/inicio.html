@@ -34,52 +34,16 @@
                   </tr>
               </thead>
               <tbody>
+                {% for users in usuarios %}
                   <tr>
-                    <td><a href="{{url_for('usuario')}}">1</a></td>
-                    <td>claraolveiraana87@gmail.com</td>
-                    <td>Ana Clara Oliveira</td>
-                    <td>24-03-2024</td>
-                    <td><a href="{{url_for('atualiza_user')}}"><span class="label label-success"><i class="fa-solid fa-pencil"></i> Alterar</span></a></td>
-                    <td><a href="{{url_for('usuario')}}"><span class="label label-danger"><i class="fa-solid fa-eraser"></i> Excluir</span></a></td>
+                    <td>{{users.id}}</td>
+                    <td>{{users.email}}</td>
+                    <td>{{users.nome}}</td>
+                    <td>{{users.data}}</td>
+                    <td><a href="#"><span class="label label-success"><i class="fa-solid fa-pencil"></i> Alterar</span></a></td>
+                    <td><a href="{{url_for('excluir_user',id=users.id)}}"><span class="label label-danger"><i class="fa-solid fa-eraser"></i> Excluir</span></a></td>
                   </tr>
-
-                  <tr>
-                    <td><a href="{{url_for('usuario')}}">2</a></td>
-                    <td>kathleenggomes2503@gmail.com</td>
-                    <td>Kathleen Gomes</td>
-                    <td>24-03-2024</td>
-                    <td><a href="{{url_for('atualiza_user')}}"><span class="label label-success"><i class="fa-solid fa-pencil"></i> Alterar</span></a></td>
-                    <td><a href="{{url_for('usuario')}}"><span class="label label-danger"><i class="fa-solid fa-eraser"></i> Excluir</span></a></td>
-                  </tr>
-
-                  <tr>
-                    <td><a href="{{url_for('usuario')}}">3</a></td>
-                    <td>XX</td>
-                    <td>Henrique Camargo</td>
-                    <td>24-03-2024</td>
-                    <td><a href="{{url_for('atualiza_user')}}"><span class="label label-success"><i class="fa-solid fa-pencil"></i> Alterar</span></a></td>
-                    <td><a href="{{url_for('usuario')}}"><span class="label label-danger"><i class="fa-solid fa-eraser"></i> Excluir</span></a></td>
-                  </tr>
-
-                  <tr>
-                    <td><a href="{{url_for('usuario')}}">4</a></td>
-                    <td>miguellemepps13@gmail.com</td>
-                    <td>Miguel </td>
-                    <td>24-03-2024</td>
-                    <td><a href="{{url_for('atualiza_user')}}"><span class="label label-success"><i class="fa-solid fa-pencil"></i> Alterar</span></a></td>
-                    <td><a href="{{url_for('usuario')}}"><span class="label label-danger"><i class="fa-solid fa-eraser"></i> Excluir</span></a></td>
-                  </tr>
-
-                  <tr>
-                    <td><a href="{{url_for('usuario')}}">5</a></td>
-                    <td>gaberbass@gmail.com</td>
-                    <td>Gabriel</td>
-                    <td>24-03-2024</td>
-                    <td><a href="{{url_for('atualiza_user')}}"><span class="label label-success"><i class="fa-solid fa-pencil"></i> Alterar</span></a></td>
-                    <td><a href="{{url_for('usuario')}}"><span class="label label-danger"><i class="fa-solid fa-eraser"></i> Excluir</span></a></td>
-                  </tr>
-               
-                           
+                  {% endfor %}
               </tbody>
           </table>
           <a href="{{url_for('cad_user')}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Inserir usuário</a>
