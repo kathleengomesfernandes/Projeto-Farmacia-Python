@@ -1,4 +1,5 @@
 from app.models import usuario
+from app.models import clientes
 from app import db
 from app.forms import LoginForm
 from datetime import timedelta
@@ -17,12 +18,23 @@ def init_app(app):
     def inicio():        
         return render_template("/inicio.html", usuarios=db.session.execute(db.select(usuario).order_by(usuario.id)).scalars())
     
+    @app.route("/cliente")
+    def cliente():        
+        return render_template("/cliente.html", client=db.session.execute(db.select(clientes).order_by(clientes.id)).scalars())
+    
     @app.route("/excluir/<int:id>")
     def excluir_user(id):
         delete=usuario.query.filter_by(id=id).first()
         db.session.delete(delete)
         db.session.commit()
         return redirect(url_for("inicio"))
+    
+    @app.route("/excluir_cli/<int:id>")
+    def excluir_cli(id):
+        delete=clientes.query.filter_by(id=id).first()
+        db.session.delete(delete)
+        db.session.commit()
+        return redirect(url_for("cliente"))
 
     @app.route("/nota_fiscal")
     def nota_fiscal():        
@@ -36,9 +48,7 @@ def init_app(app):
     def produto():        
         return render_template("produto.html")
     
-    @app.route("/cliente")
-    def cliente():        
-        return render_template("cliente.html")
+
     
     @app.route("/cad_prod")
     def cad_prod():        
