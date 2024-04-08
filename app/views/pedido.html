@@ -33,15 +33,15 @@
                   </tr>
               </thead>
               <tbody>
+                {% for pedi in ped %}
                   <tr>
-                    <td><a href="{{url_for('usuario')}}">1</a></td>
-                    <td>1314</td>
-                    <td>XXXX</td>
-                    <td><a href="{{url_for('atualiza_user')}}"><span class="label label-success"><i class="fa-solid fa-pencil"></i> Alterar</span></a></td>
-                    <td><a href="{{url_for('usuario')}}"><span class="label label-danger"><i class="fa-solid fa-eraser"></i> Excluir</span></a></td>
+                    <td>{{pedi.id}}</td>
+                    <td>{{pedi.num_pedido}}</td>
+                    <td>{{pedi.materia_prima}}</td>
+                    <td><a href="#"><span class="label label-success"><i class="fa-solid fa-pencil"></i> Alterar</span></a></td>
+                    <td><a href="{{url_for('excluir_pedi', id=pedi.id)}}"><span class="label label-danger"><i class="fa-solid fa-eraser"></i> Excluir</span></a></td>
                   </tr>
-
-                  
+                {% endfor %}
               </tbody>
           </table>
           <a href="{{url_for('cad_pedido')}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Inserir pedido</a>

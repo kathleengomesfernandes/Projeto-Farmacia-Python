@@ -1,5 +1,7 @@
 from app.models import usuario
 from app.models import clientes
+from app.models import pedidos
+from app.models import produtos
 from app import db
 from app.forms import LoginForm
 from datetime import timedelta
@@ -35,7 +37,29 @@ def init_app(app):
         db.session.delete(delete)
         db.session.commit()
         return redirect(url_for("cliente"))
+    
+    @app.route("/pedido")
+    def pedido():        
+        return render_template("pedido.html", ped=db.session.execute(db.select(pedidos).order_by(pedidos.id)).scalars())
+    
+    @app.route("/excluir_pedi/<int:id>")
+    def excluir_pedi(id):
+        delete=pedidos.query.filter_by(id=id).first()
+        db.session.delete(delete)
+        db.session.commit()
+        return redirect(url_for("pedido"))
+    
+    @app.route("/produto")
+    def produto():        
+        return render_template("produto.html", prod=db.session.execute(db.select(produtos).order_by(produtos.id)).scalars())
 
+    @app.route("/excluir_pdts/<int:id>")
+    def excluir_pdts(id):
+        delete=produtos.query.filter_by(id=id).first()
+        db.session.delete(delete)
+        db.session.commit()
+        return redirect(url_for("produto"))
+    
     @app.route("/nota_fiscal")
     def nota_fiscal():        
         return render_template("nota_fiscal.html")
@@ -44,12 +68,6 @@ def init_app(app):
     def financeiro():        
         return render_template("financeiro.html")
     
-    @app.route("/produto")
-    def produto():        
-        return render_template("produto.html")
-    
-
-    
     @app.route("/cad_prod")
     def cad_prod():        
         return render_template("cad_prod.html")
@@ -57,14 +75,6 @@ def init_app(app):
     @app.route("/cad_cliente")
     def cad_cliente():        
         return render_template("cad_cliente.html")
-    
-    #@app.route("/usuario")
-    #def usuario():        
-        #return render_template("usuario.html")
-    
-    @app.route("/pedido")
-    def pedido():        
-        return render_template("pedido.html")
     
     @app.route("/cad_user")
     def cad_user():        

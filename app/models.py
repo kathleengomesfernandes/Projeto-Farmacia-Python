@@ -12,15 +12,7 @@ class usuario(db.Model, UserMixin):
     nome = db.Column(db.String(255), nullable=False)
     senha = db.Column(db.String(255),nullable=False)
     data = db.Column(db.DateTime,  default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())   
-
-class produto(db.Model):
-    __tablename__ = "produto"
-    id = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(255), nullable=False, unique=True)
-    tipo = db.Column(db.String(255), nullable=False)
-    quatidade = db.Column(db.Integer, nullable=False)
-    data = db.Column(db.DateTime,  default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
-
+    
 class financeiro(db.Model):
     __tablename__ = "financeiro"
     id = db.Column(db.Integer, primary_key=True)
@@ -35,4 +27,18 @@ class clientes(db.Model):
     nome = db.Column(db.String(255), nullable=True)
     email = db.Column(db.String(255), nullable=True)
     empresa = db.Column(db.String(255), nullable=True)
-   
+
+class pedidos(db.Model):
+    __tablename__ = "pedidos"
+    id = db.Column(db.Integer, primary_key=True)
+    num_pedido = db.Column(db.String(255), nullable=True)
+    materia_prima = db.Column(db.String(255), nullable=True)
+class produtos(db.Model):
+    __tablename__ = "produtos"
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(255), nullable=True)
+    qr_code_produto = db.Column(db.String(255), nullable=True)
+    reacao = db.Column(db.String(255), nullable=True)
+    conservacao = db.Column(db.String(255), nullable=True)
+    data_validade = db.Column(db.DateTime,  default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
+

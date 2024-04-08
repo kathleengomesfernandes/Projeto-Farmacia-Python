@@ -29,25 +29,25 @@
                     <th scope="col">Nome</th>
                     <th scope="col">QRCode Produto</th>
                     <th scope="col">Reação</th>
-                    <th scope="col">Validade</th>
                     <th scope="col">Conservação</th>
+                    <th scope="col">Validade</th>
                     <th scope="col">Alterar</th>                     
                     <th scope="col">Excluir</th>
                   </tr>
               </thead>
               <tbody>
+                {% for pdts in prod %}
                   <tr>
-                    <td><a href="{{url_for('usuario')}}">1</a></td>
-                    <td>Dipirona</td>
-                    <td>XX</td>
-                    <td>Alergia</td>
-                    <td>24/03/2025</td>
-                    <td>Temperatura ambiente</td>
-                    <td><a href="{{url_for('atualiza_user')}}"><span class="label label-success"><i class="fa-solid fa-pencil"></i> Alterar</span></a></td>
-                    <td><a href="{{url_for('usuario')}}"><span class="label label-danger"><i class="fa-solid fa-eraser"></i> Excluir</span></a></td>
+                    <td>{{pdts.id}}</td>
+                    <td>{{pdts.nome}}</td>
+                    <td>{{pdts.qr_code_produto}}</td>
+                    <td>{{pdts.reacao}}</td>
+                    <td>{{pdts.conservacao}}</td>
+                    <td>{{pdts.validade}}</td>
+                    <td><a href="#"><span class="label label-success"><i class="fa-solid fa-pencil"></i> Alterar</span></a></td>
+                    <td><a href="{{url_for('excluir_pdts', id=pdts.id)}}"><span class="label label-danger"><i class="fa-solid fa-eraser"></i> Excluir</span></a></td>
                   </tr>
-               
-                           
+                  {% endfor %}         
               </tbody>
           </table>
           <a href="{{url_for('cad_prod')}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Inserir produto</a>
