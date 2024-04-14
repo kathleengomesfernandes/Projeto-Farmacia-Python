@@ -40,7 +40,7 @@
                     <td>{{cli.nome}}</td>
                     <td>{{cli.email}}</td>
                     <td>{{cli.empresa}}</td>
-                    <td><a href="#"><span class="label label-success"><i class="fa-solid fa-pencil"></i> Alterar</span></a></td>
+                    <td><a href="{{url_for('atualiza_cliente', id=cli.id)}}"><span class="label label-success"><i class="fa-solid fa-pencil"></i> Alterar</span></a></td>
                     <td><a href="{{url_for('excluir_cli', id=cli.id)}}"><span class="label label-danger"><i class="fa-solid fa-eraser"></i> Excluir</span></a></td>
                   </tr>
                 {% endfor %}
