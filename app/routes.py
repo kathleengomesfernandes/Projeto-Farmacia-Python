@@ -64,9 +64,7 @@ def init_app(app):
     def nota_fiscal():        
         return render_template("nota_fiscal.html")
     
-    @app.route("/financeiro")
-    def financeiro():        
-        return render_template("financeiro.html")
+    
     
     @app.route("/cad_prod", methods=["GET", "POST"])
     def cad_prod():        
@@ -109,9 +107,7 @@ def init_app(app):
     def cad_NF():        
         return render_template("cad_NF.html")
     
-    @app.route("/cad_financeiro")
-    def cad_financeiro():        
-        return render_template("cad_financeiro.html")
+    
     
     @app.route("/atualiza_user/<int:id>", methods=["GET", "POST"])
     def atualiza_user(id): 
@@ -127,9 +123,13 @@ def init_app(app):
             return redirect(url_for("inicio"))
         return render_template("atualiza_user.html", usua=users)
     
-    @app.route("/atualiza_financeiro")
-    def atualiza_financeiro():        
-        return render_template("atualiza_financeiro.html")
+    #@app.route("/atualiza_financeiro")
+    #def atualiza_financeiro():        
+        #return render_template("atualiza_financeiro.html")
+    
+    #@app.route("/cad_financeiro")
+    #def cad_financeiro():        
+        #return render_template("cad_financeiro.html")
     
     
     
