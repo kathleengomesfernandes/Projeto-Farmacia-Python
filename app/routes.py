@@ -68,16 +68,37 @@ def init_app(app):
     def financeiro():        
         return render_template("financeiro.html")
     
-    @app.route("/cad_prod")
+    @app.route("/cad_prod", methods=["GET", "POST"])
     def cad_prod():        
+        if request.method =="POST":
+            prod = produto()
+            prod.nome = request.form["nome"].nome 
+            prod.qr_code_produto = request.form["qr_code_produto"]
+            prod.reacao = request.form["reacao"].reacao 
+            prod.conservacao = request.form["conservacao"]
+            db.session.add(prod)
+            db.session.commit()
+
+            flash("Produto criado com sucesso!")
+            return redirect(url_for("cad_prod"))
         return render_template("cad_prod.html")
     
     @app.route("/cad_cliente")
     def cad_cliente():        
         return render_template("cad_cliente.html")
     
-    @app.route("/cad_user")
+    @app.route("/cad_user", methods=["GET", "POST"])
     def cad_user():        
+        if request.method =="POST":
+            user = usuario()
+            user.email = request.form["email"]
+            user.nome = request.form["nome"]
+            user.senha = generate_password_hash(request.form["senha"])
+            db.session.add(user)
+            db.session.commit()
+
+            flash("Usuário criado com sucesso!")
+            return redirect(url_for("cad_user"))
         return render_template("cad_user.html")
     
     @app.route("/cad_pedido")
@@ -92,9 +113,19 @@ def init_app(app):
     def cad_financeiro():        
         return render_template("cad_financeiro.html")
     
-    @app.route("/atualiza_user")
-    def atualiza_user():        
-        return render_template("atualiza_user.html")
+    @app.route("/atualiza_user/<int:id>", methods=["GET", "POST"])
+    def atualiza_user(id): 
+        users=usuario.query.filter_by(id=id).first() 
+        if request.method == "POST":
+            nome_usuario = request.form["nome"]
+            email_usuario = request.form["email"]
+            senha_usuario = generate_password_hash(request.form["senha"])
+            
+            flash("Dados do usuário alterado com sucesso!")
+            users.query.filter_by(id=id).update({"nome":nome_usuario, "email":email_usuario, "senha":senha_usuario})
+            db.session.commit()
+            return redirect(url_for("inicio"))
+        return render_template("atualiza_user.html", usua=users)
     
     @app.route("/atualiza_financeiro")
     def atualiza_financeiro():        
