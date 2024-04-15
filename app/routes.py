@@ -154,10 +154,11 @@ def init_app(app):
     def cad_prod():        
         if request.method =="POST":
             prod = produto()
-            prod.nome = request.form["nome"].nome 
+            prod.nome = request.form["nome"] 
             prod.qr_code_produto = request.form["qr_code_produto"]
-            prod.reacao = request.form["reacao"].reacao 
+            prod.reacao = request.form["reacao"]
             prod.conservacao = request.form["conservacao"]
+            prod.data_validade = request.form["data_validade"]
             db.session.add(prod)
             db.session.commit()
 
@@ -165,7 +166,21 @@ def init_app(app):
             return redirect(url_for("cad_prod"))
         return render_template("cad_prod.html")
     
-    
+    @app.route("/atualiza_produto/<int:id>", methods=["GET", "POST"])
+    def atualiza_produto(id): 
+        pdts=produtos.query.filter_by(id=id).first() 
+        if request.method == "POST":
+            nome_pdts = request.form["nome"]
+            qr_code_produto_pdts = request.form["qr_code_produto"]
+            reacao_pdts = request.form["reacao"]
+            conservacao_pdts = request.form["conservacao"]
+            data_validade_pdts = request.form["data_validade"]
+        
+            flash("Dados do produto alterado com sucesso!")
+            pdts.query.filter_by(id=id).update({"nome":nome_pdts, "qr_code_produto":qr_code_produto_pdts, "reacao":reacao_pdts, "conservacao":conservacao_pdts, "data_validade":data_validade_pdts})
+            db.session.commit()
+            return redirect(url_for("produto"))
+        return render_template("atualiza_produto.html", prods=pdts)
     
     @app.route("/nota_fiscal")
     def nota_fiscal():        
