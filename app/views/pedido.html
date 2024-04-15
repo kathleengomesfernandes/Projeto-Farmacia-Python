@@ -27,7 +27,10 @@
                   <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Nº pedido</th>
-                    <th scope="col">Matéria prima</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Insumos</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Valor</th>
                     <th scope="col">Alterar</th>                     
                     <th scope="col">Excluir</th>
                   </tr>
@@ -37,8 +40,11 @@
                   <tr>
                     <td>{{pedi.id}}</td>
                     <td>{{pedi.num_pedido}}</td>
-                    <td>{{pedi.materia_prima}}</td>
-                    <td><a href="#"><span class="label label-success"><i class="fa-solid fa-pencil"></i> Alterar</span></a></td>
+                    <td>{{pedi.descricao}}</td>
+                    <td>{{pedi.insumos}}</td>
+                    <td>{{pedi.quantidade}}</td>
+                    <td>{{pedi.valor}}</td>
+                    <td><a href="{{url_for('atualiza_pedido', id=pedi.id)}}"><span class="label label-success"><i class="fa-solid fa-pencil"></i> Alterar</span></a></td>
                     <td><a href="{{url_for('excluir_pedi', id=pedi.id)}}"><span class="label label-danger"><i class="fa-solid fa-eraser"></i> Excluir</span></a></td>
                   </tr>
                 {% endfor %}

@@ -22,7 +22,10 @@ class pedidos(db.Model):
     __tablename__ = "pedidos"
     id = db.Column(db.Integer, primary_key=True)
     num_pedido = db.Column(db.String(255), nullable=True)
-    materia_prima = db.Column(db.String(255), nullable=True)
+    descricao = db.Column(db.String(255), nullable=True)
+    insumos = db.Column(db.String(255), nullable=True)
+    quantidade = db.Column(db.String(255), nullable=True)
+    valor = db.Column(db.String(255), nullable=True)
 class produtos(db.Model):
     __tablename__ = "produtos"
     id = db.Column(db.Integer, primary_key=True)

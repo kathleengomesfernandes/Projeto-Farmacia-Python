@@ -11,7 +11,7 @@
               <h3 class="box-title">Cadastro de Pedido</h3>
             </div><!-- /.box-header -->
             <!-- form start -->
-            <form class="row g-3" action="{{url_for('cad_user')}}" method="POST" name="dados_user" onSubmit="return enviardados_user();">
+            <form class="row g-3" action="{{url_for('cad_pedido')}}" method="POST" name="dados_pedi" onSubmit="return enviardados_pedi();">
               <div class="box-body">
                
               <div class="col-md-10">
@@ -32,8 +32,20 @@
                 <input class="form-control" type="text" name="num_pedido" id="num_pedido">
               </div>
               <div class="col-md-4">
-                <label class="form-label" >Matéria prima</label>
-                <input class="form-control" type="text" name="mat_prima">
+                <label class="form-label" >Descrição</label>
+                <input class="form-control" type="text" name="descricao">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label" >Insumos</label>
+                <input class="form-control" type="text" name="insumos">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label" >Quantidade</label>
+                <input class="form-control" type="text" name="quantidade">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label" >Valor</label>
+                <input class="form-control" type="text" name="Valor">
               </div>
               <div class="col-md-12">
                 <br>

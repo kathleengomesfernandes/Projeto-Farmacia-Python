@@ -106,10 +106,38 @@ def init_app(app):
         db.session.delete(delete)
         db.session.commit()
         return redirect(url_for("pedido"))
-    
-    @app.route("/cad_pedido")
+        
+    @app.route("/cad_pedido", methods=["GET", "POST"])
     def cad_pedido():        
+        if request.method =="POST":
+            pedi = pedido()
+            pedi.num_pedido = request.form["num_pedido"]
+            pedi.descricao = request.form["descricao"]
+            pedi.insumos = request.form["insumos"]
+            pedi.quantidades = request.form["quantidade"]
+            pedi.valor = request.form["valor"]
+            db.session.add(pedi)
+            db.session.commit()
+
+            flash("Pedido criado com sucesso!")
+            return redirect(url_for("cad_pedido"))
         return render_template("cad_pedido.html")
+    
+    @app.route("/atualiza_pedido/<int:id>", methods=["GET", "POST"])
+    def atualiza_pedido(id): 
+        pedi=pedidos.query.filter_by(id=id).first() 
+        if request.method == "POST":
+            num_pedido_pedidos = request.form["num_pedido"]
+            descricao_pedidos = request.form["descricao"]
+            insumos_pedidos = request.form["insumos"]
+            quantidade_pedidos = request.form["quantidade"]
+            valor_pedidos = request.form["valor"]
+        
+            flash("Dados do pedido alterado com sucesso!")
+            pedi.query.filter_by(id=id).update({"num_pedido":num_pedido_pedidos, "descricao":descricao_pedidos, "insumos":insumos_pedidos, "quantidade":quantidade_pedidos, "valor":valor_pedidos})
+            db.session.commit()
+            return redirect(url_for("pedido"))
+        return render_template("atualiza_pedido.html", peds=pedi)
     
     @app.route("/produto")
     def produto():        
@@ -136,6 +164,8 @@ def init_app(app):
             flash("Produto criado com sucesso!")
             return redirect(url_for("cad_prod"))
         return render_template("cad_prod.html")
+    
+    
     
     @app.route("/nota_fiscal")
     def nota_fiscal():        
