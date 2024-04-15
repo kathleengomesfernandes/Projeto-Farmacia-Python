@@ -18,7 +18,6 @@ class clientes(db.Model):
     nome = db.Column(db.String(255), nullable=True)
     email = db.Column(db.String(255), nullable=True)
     empresa = db.Column(db.String(255), nullable=True)
-
 class pedidos(db.Model):
     __tablename__ = "pedidos"
     id = db.Column(db.Integer, primary_key=True)
@@ -33,3 +32,10 @@ class produtos(db.Model):
     conservacao = db.Column(db.String(255), nullable=True)
     data_validade = db.Column(db.DateTime,  default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
+class notas(db.Model):
+    __tablename__ = "notas"
+    id = db.Column(db.Integer, primary_key=True)
+    num_nf = db.Column(db.String(255), nullable=True)
+    valor = db.Column(db.String(255), nullable=True)
+    data_emissao = db.Column(db.DateTime,  default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
+    descricao = db.Column(db.String(255), nullable=True)

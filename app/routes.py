@@ -2,6 +2,7 @@ from app.models import usuario
 from app.models import clientes
 from app.models import pedidos
 from app.models import produtos
+from app.models import notas
 from app import db
 from app.forms import LoginForm
 from datetime import timedelta
@@ -136,28 +137,46 @@ def init_app(app):
             return redirect(url_for("cad_prod"))
         return render_template("cad_prod.html")
     
-    
     @app.route("/nota_fiscal")
     def nota_fiscal():        
-        return render_template("nota_fiscal.html")
+        return render_template("/nota_fiscal.html", nota=db.session.execute(db.select(notas).order_by(notas.id)).scalars())
     
+    @app.route("/excluir_notaf/<int:id>")
+    def excluir_notaf(id):
+        delete=notas.query.filter_by(id=id).first()
+        db.session.delete(delete)
+        db.session.commit()
+        return redirect(url_for("nota_fiscal"))
     
+    @app.route("/cad_nota", methods=["GET", "POST"])
+    def cad_nota():        
+        if request.method =="POST":
+            notaf = notas()
+            notaf.num_nf = request.form["num_nf"] 
+            notaf.valor = request.form["valor"]
+            notaf.data_emissao = request.form["data_emissao"]
+            notaf.descricao = request.form["descricao"]   
+            db.session.add(notaf)
+            db.session.commit()
 
+            flash("Nota fiscal criada com sucesso!")
+            return redirect(url_for("cad_nota"))
+        return render_template("cad_nota.html")
     
-    
-    
-    
-    
-    
-    
-    @app.route("/cad_NF")
-    def cad_NF():        
-        return render_template("cad_NF.html")
-    
-    
-    
-    
-    
+    @app.route("/atualiza_nota/<int:id>", methods=["GET", "POST"])
+    def atualiza_nota(id): 
+        notaf=notas.query.filter_by(id=id).first() 
+        if request.method == "POST":
+            num_nf_notas = request.form["num_nf"]
+            valor_notas = request.form["valor"]
+            data_emissao_notas = request.form["data_emissao"]
+            descricao_notas = request.form["descricao"]
+            
+            flash("Dados da nota fiscal alterado com sucesso!")
+            notaf.query.filter_by(id=id).update({"num_nf":num_nf_notas, "valor":valor_notas, "data_emissao":data_emissao_notas, "descricao":descricao_notas})
+            db.session.commit()
+            return redirect(url_for("nota_fiscal"))
+        return render_template("atualiza_nota.html", ntfiscal=notaf)
     
     
     

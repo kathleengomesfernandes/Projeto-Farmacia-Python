@@ -1,0 +1,47 @@
+{% extends "base_sistema.html" %}
+{% block subtitulo %} Usuarios {% endblock%}
+    {% block conteudo %}
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Cadastro de usuarios</h3>
+            </div><!-- /.box-header -->
+            <!-- form start -->
+            <form class="row g-3" action="{{url_for('atualiza_nota', id=ntfiscal.id)}}" method="POST" name="dados_notaf" onSubmit="return enviardados_notaf();">
+              <div class="box-body">               
+                <div class="col-md-4">
+                  <label class="form-label">Nº Nota Fiscal</label>
+                  <input class="form-control" type="text" name="num_nf" id="num_nf" value="{ntfiscal.num_nf}">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label" >Valor</label>
+                  <input class="form-control" type="text" name="valor" value="{ntfiscal.valor}">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Data de Emissão</label>
+                  <input class="form-control"  type="date" name="data_emissao" value="{ntfiscal.data_emissao}">
+                </div> 
+                <div class="col-md-4">
+                  <label class="form-label">Descrição</label>
+                  <input class="form-control"  type="text" name="descricao" value="{ntfiscal.descricao}">
+                </div> 
+                <div class="col-md-12">
+                  <br>                      
+                </div>                                                         
+                <div class="col-md-12">
+                  <button class="btn btn-primary" type="submit">Alterar</button>                      
+                </div>
+                       
+            </div>
+            
+            </form>                 
+          </div><!-- /.box -->         
+        </div><!--/.col (left) -->
+        <!-- right column -->        
+      </div>   <!-- /.row -->
+    </section><!-- /.content -->
+    {% endblock %}

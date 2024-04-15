@@ -29,33 +29,26 @@
                     <th scope="col">Nº Nota Fiscal</th>
                     <th scope="col">Valor</th>
                     <th scope="col">Data de Emissão</th>
+                    <th scope="col">Descrição</th>
                     <th scope="col">Alterar</th>                     
                     <th scope="col">Excluir</th>
                   </tr>
               </thead>
               <tbody>
+                {% for notaf in nota %}
                   <tr>
-                    <td><a href="{{url_for('usuario')}}">1</a></td>
-                    <td>131</td>
-                    <td>1.000,00</td>
-                    <td>24-03-2024</td>
-                    <td><a href="{{url_for('atualiza_user')}}"><span class="label label-success"><i class="fa-solid fa-pencil"></i> Alterar</span></a></td>
-                    <td><a href="{{url_for('usuario')}}"><span class="label label-danger"><i class="fa-solid fa-eraser"></i> Excluir</span></a></td>
-                  </tr>
-
-                  <tr>
-                    <td><a href="{{url_for('usuario')}}">2</a></td>
-                    <td>128</td>
-                    <td>500,00</td>
-                    <td>24-03-2024</td>
-                    <td><a href="{{url_for('atualiza_user')}}"><span class="label label-success"><i class="fa-solid fa-pencil"></i> Alterar</span></a></td>
-                    <td><a href="{{url_for('usuario')}}"><span class="label label-danger"><i class="fa-solid fa-eraser"></i> Excluir</span></a></td>
-                  </tr>
-               
-                           
+                    <td>{{notaf.id}}</td>
+                    <td>{{notaf.num_nf}}</td>
+                    <td>{{notaf.valor}}</td>
+                    <td>{{notaf.data_emissao}}</td>
+                    <td>{{notaf.descricao}}</td>                    
+                    <td><a href="{{url_for('atualiza_nota', id=notaf.id)}}"><span class="label label-success"><i class="fa-solid fa-pencil"></i>Alterar</span></a></td>
+                    <td><a href="{{url_for('excluir_notaf', id=notaf.id)}}"><span class="label label-danger"><i class="fa-solid fa-eraser"></i>Excluir</span></a></td>
+                  </tr> 
+                {% endfor %}
               </tbody>
           </table>
-          <a href="{{url_for('cad_NF')}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Inserir Nota</a>
+          <a href="{{url_for('cad_nota')}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Inserir Nota</a>
        </div>      
     </div>        
   </div>

@@ -11,7 +11,7 @@
               <h3 class="box-title">Cadastro de Nota Fiscal</h3>
             </div><!-- /.box-header -->
             <!-- form start -->
-            <form class="row g-3" action="{{url_for('cad_user')}}" method="POST" name="dados_user" onSubmit="return enviardados_user();">
+            <form class="row g-3" action="{{url_for('cad_nota')}}" method="POST" name="dados_notaf" onSubmit="return enviardados_notaf();">
               <div class="box-body">
                
               <div class="col-md-10">
@@ -37,8 +37,12 @@
               </div>
               <div class="col-md-4">
                 <label class="form-label">Data de Emissão</label>
-                <input class="form-control"  type="date" name="data_nf">
+                <input class="form-control" type="date" name="data_emissao">
               </div>   
+              <div class="col-md-4">
+                <label class="form-label">Descrição</label>
+                <input class="form-control" type="text" name="descricao">
+              </div>  
               <div class="col-md-12">
                 <br>
               </div>                             
