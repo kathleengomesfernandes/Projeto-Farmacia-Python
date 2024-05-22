@@ -13,11 +13,37 @@ import secrets
 
 def init_app(app):
         
-    #@app.route("/")
-    #def principal():        
-        #return render_template("seu_job/index.html")
+    @app.route("/",methods=["GET", "POST"])
+    def index():        
+        form = LoginForm()
+        
+        if form.validate_on_submit():
+        #if request.method == "POST":
+            user = usuario.query.filter_by(email=form.email.data).first()
+            
+            if not user:
+                flash("Email do usuario incorreto, por favor verifique!")
+                return redirect(url_for("index"))
+                #return render_template("user_inv.html")
+            
+            elif not check_password_hash(user.senha, form.senha.data):
+                flash("Senha de usuario incorreto, por favor verifique")
+                return redirect(url_for("index"))
+                #return render_template("user_inv.html")
+            
+            login_user(user, remember=form.remember.data, duration= timedelta(days=7))
+            #login_user(user)
+            return redirect(url_for("inicio"))
+        
+        return render_template("index.html", form=form)  
     
-    @app.route("/")
+    @app.route("/logout")
+    def logout():
+        logout_user()
+        return redirect(url_for("index"))  
+    
+    @app.route("/inicio")
+    @login_required
     def inicio():        
         return render_template("/inicio.html", usuarios=db.session.execute(db.select(usuario).order_by(usuario.id)).scalars())
     
@@ -55,7 +81,6 @@ def init_app(app):
             db.session.commit()
             return redirect(url_for("inicio"))
         return render_template("atualiza_user.html", usua=users)
-    
     
     @app.route("/cliente")
     def cliente():        
