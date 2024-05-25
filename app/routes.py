@@ -181,7 +181,7 @@ def init_app(app):
             prod = produto()
             prod.nome = request.form["nome"] 
             prod.qr_code_produto = request.form["qr_code_produto"]
-            prod.reacao = request.form["reacao"]
+            prod.observacao = request.form["observacao"]
             prod.conservacao = request.form["conservacao"]
             prod.data_validade = request.form["data_validade"]
             db.session.add(prod)
@@ -197,12 +197,12 @@ def init_app(app):
         if request.method == "POST":
             nome_pdts = request.form["nome"]
             qr_code_produto_pdts = request.form["qr_code_produto"]
-            reacao_pdts = request.form["reacao"]
+            observacao_pdts = request.form["observacao"]
             conservacao_pdts = request.form["conservacao"]
             data_validade_pdts = request.form["data_validade"]
         
             flash("Dados do produto alterado com sucesso!")
-            pdts.query.filter_by(id=id).update({"nome":nome_pdts, "qr_code_produto":qr_code_produto_pdts, "reacao":reacao_pdts, "conservacao":conservacao_pdts, "data_validade":data_validade_pdts})
+            pdts.query.filter_by(id=id).update({"nome":nome_pdts, "qr_code_produto":qr_code_produto_pdts, "observacao":observacao_pdts, "conservacao":conservacao_pdts, "data_validade":data_validade_pdts})
             db.session.commit()
             return redirect(url_for("produto"))
         return render_template("atualiza_produto.html", prods=pdts)

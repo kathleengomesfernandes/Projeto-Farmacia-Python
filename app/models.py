@@ -39,7 +39,7 @@ class produtos(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(255), nullable=True)
     qr_code_produto = db.Column(db.String(255), nullable=True)
-    reacao = db.Column(db.String(255), nullable=True)
+    observacao = db.Column(db.String(255), nullable=True)
     conservacao = db.Column(db.String(255), nullable=True)
     data_validade = db.Column(db.DateTime,  default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 

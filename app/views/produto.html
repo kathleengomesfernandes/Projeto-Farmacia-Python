@@ -28,7 +28,7 @@
                     <th scope="col">Id</th>
                     <th scope="col">Nome</th>
                     <th scope="col">QRCode Produto</th>
-                    <th scope="col">Reação</th>
+                    <th scope="col">Observação</th>
                     <th scope="col">Conservação</th>
                     <th scope="col">Data de Validade</th>
                     <th scope="col">Alterar</th>                     
@@ -41,7 +41,7 @@
                     <td>{{pdts.id}}</td>
                     <td>{{pdts.nome}}</td>
                     <td>{{pdts.qr_code_produto}}</td>
-                    <td>{{pdts.reacao}}</td>
+                    <td>{{pdts.observacao}}</td>
                     <td>{{pdts.conservacao}}</td>
                     <td>{{pdts.data_validade}}</td>
                     <td><a href="{{url_for('atualiza_produto', id=pdts.id)}}"><span class="label label-success"><i class="fa-solid fa-pencil"></i> Alterar</span></a></td>
